@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Right Light — ремонт фар и улучшение автосвета в Уфе</title>
-<meta name="description" content="Right Light — мастерская автосвета в Уфе. Ремонт фар, улучшение автосвета. Делаем Ваш путь ярче!">
+<title>Right Light — мастерская автосвета в Уфе</title>
+<meta name="description" content="Right Light — мастерская автосвета в Уфе. Ремонт фар, улучшение автосвета. Делаем ваш путь ярче.">
 
-<!-- Превью для мессенджеров и соцсетей (покажет BMW) -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Right Light — ремонт фар и улучшение автосвета">
-<meta property="og:description" content="Мастерская автосвета в Уфе. Делаем Ваш путь ярче!">
+<meta property="og:title" content="Right Light — мастерская автосвета">
+<meta property="og:description" content="Делаем ваш путь ярче. Ремонт фар и улучшение автосвета в Уфе.">
 <meta property="og:image" content="photo1.jpg">
-<meta name="twitter:card" content="summary_large_image"
+<meta name="twitter:card" content="summary_large_image">
 
 <style>
   :root{
@@ -20,8 +19,8 @@
     --card:#1a2029;
     --text:#eef2f7;
     --muted:#8a94a3;
-    --accent:#5fb8e8;
-    --accent2:#a5d8f0;
+    --accent:#ff4d5e;
+    --accent2:#ff8a95;
     --radius:18px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -32,7 +31,34 @@
     color:var(--text);
     line-height:1.6;
     overflow-x:hidden;
+    position:relative;
   }
+
+  /* ===== КРАСНО-БЕЛЫЙ РАЗМЫТЫЙ ФОН ===== */
+  body::before{
+    content:'';position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,77,94,.35), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(255,138,149,.3), transparent 50%),
+      radial-gradient(circle at 50% 100%, rgba(255,255,255,.15), transparent 55%),
+      linear-gradient(135deg, #1a0d10 0%, #0e1117 50%, #2a0f14 100%);
+    filter:blur(40px);
+  }
+  body::after{
+    content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.4;
+    background-image:
+      radial-gradient(circle at 10% 15%, rgba(255,255,255,.15) 0 3px, transparent 4px),
+      radial-gradient(circle at 90% 25%, rgba(255,77,94,.25) 0 60px, transparent 61px),
+      radial-gradient(circle at 25% 80%, rgba(255,255,255,.1) 0 40px, transparent 41px),
+      linear-gradient(45deg, transparent 48%, rgba(255,138,149,.15) 49% 51%, transparent 52%),
+      linear-gradient(-45deg, transparent 48%, rgba(255,255,255,.1) 49% 51%, transparent 52%);
+    animation:bgFloat 25s ease-in-out infinite;
+  }
+  @keyframes bgFloat{
+    0%,100%{transform:translate(0,0) scale(1)}
+    50%{transform:translate(-30px,20px) scale(1.05)}
+  }
+
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
 
@@ -40,7 +66,7 @@
     position:fixed;top:0;left:0;right:0;z-index:100;
     display:flex;align-items:center;justify-content:space-between;
     padding:14px 6vw;
-    background:rgba(14,17,23,.7);
+    background:rgba(14,17,23,.55);
     backdrop-filter:blur(14px);
     border-bottom:1px solid rgba(255,255,255,.06);
   }
@@ -48,13 +74,13 @@
   .logo-mark{
     width:48px;height:48px;border-radius:50%;
     background:#fff;display:grid;place-items:center;
-    box-shadow:0 0 22px rgba(95,184,232,.45);
+    box-shadow:0 0 22px rgba(255,77,94,.5);
     overflow:hidden;padding:3px;flex:0 0 48px;
     transition:transform .4s ease, box-shadow .4s ease;
   }
   .logo:hover .logo-mark{
     transform:rotate(-8deg) scale(1.05);
-    box-shadow:0 0 34px rgba(95,184,232,.75);
+    box-shadow:0 0 34px rgba(255,77,94,.85);
   }
   .logo-mark img{width:100%;height:100%;object-fit:contain}
   .logo-text{display:flex;flex-direction:column;line-height:1.05}
@@ -76,22 +102,8 @@
     position:relative;min-height:100vh;
     display:flex;align-items:center;
     padding:150px 6vw 80px;
-    background:
-      radial-gradient(900px 500px at 80% 20%, rgba(95,184,232,.15), transparent 60%),
-      radial-gradient(700px 500px at 10% 90%, rgba(165,216,240,.10), transparent 60%),
-      var(--bg);
+    background:transparent;
     overflow:hidden;
-  }
-  .hero::before{
-    content:'';position:absolute;
-    top:20%;right:-10%;width:500px;height:500px;
-    background:radial-gradient(circle, rgba(95,184,232,.15), transparent 70%);
-    border-radius:50%;filter:blur(60px);
-    animation:float 8s ease-in-out infinite;
-  }
-  @keyframes float{
-    0%,100%{transform:translate(0,0)}
-    50%{transform:translate(-30px,30px)}
   }
   .hero-grid{
     display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;
@@ -99,8 +111,8 @@
   }
   .badge{
     display:inline-block;padding:7px 16px;border-radius:999px;
-    background:rgba(95,184,232,.12);
-    border:1px solid rgba(95,184,232,.35);
+    background:rgba(255,77,94,.12);
+    border:1px solid rgba(255,77,94,.4);
     color:var(--accent);font-size:.82rem;font-weight:600;letter-spacing:.6px;
     margin-bottom:22px;
     animation:fadeDown .8s ease both;
@@ -122,7 +134,6 @@
     color:var(--muted);font-size:1.1rem;max-width:520px;margin-bottom:34px;
     animation:fadeDown .8s .2s ease both;
   }
-  .hero p b{color:var(--text);font-weight:600}
   @keyframes fadeDown{
     from{opacity:0;transform:translateY(20px)}
     to{opacity:1;transform:translateY(0)}
@@ -134,9 +145,9 @@
     position:relative;overflow:hidden;
   }
   .btn-primary{
-    background:linear-gradient(120deg,var(--accent),#3a9bd1);
-    color:#0b1017;
-    box-shadow:0 10px 30px -8px rgba(95,184,232,.6);
+    background:linear-gradient(120deg,var(--accent),#d63a4b);
+    color:#fff;
+    box-shadow:0 10px 30px -8px rgba(255,77,94,.65);
   }
   .btn-primary::before{
     content:'';position:absolute;inset:0;
@@ -144,8 +155,8 @@
     transform:translateX(-100%);transition:.6s;
   }
   .btn-primary:hover::before{transform:translateX(100%)}
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px -8px rgba(95,184,232,.8)}
-  .btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.16)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px -8px rgba(255,77,94,.85)}
+  .btn-ghost{background:rgba(255,255,255,.05);color:var(--text);border:1px solid rgba(255,255,255,.2)}
   .btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
   .hero-hours{
     color:var(--muted);font-size:.9rem;margin-top:20px;
@@ -179,7 +190,7 @@
     color:var(--accent);font-weight:600;
   }
 
-  section{padding:100px 6vw}
+  section{padding:100px 6vw;position:relative}
   .container{max-width:1250px;margin:0 auto}
   .sec-head{text-align:center;margin-bottom:60px}
   .sec-head .tag{
@@ -194,8 +205,9 @@
 
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:900px;margin:0 auto}
   .card{
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.06);
+    background:rgba(26,32,41,.75);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.08);
     border-radius:var(--radius);
     padding:40px 32px;
     transition:.4s cubic-bezier(.2,.8,.2,1);
@@ -208,15 +220,15 @@
   }
   .card::before{
     content:'';position:absolute;inset:0;
-    background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(95,184,232,.12), transparent 40%);
+    background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(255,77,94,.15), transparent 40%);
     opacity:0;transition:opacity .4s;pointer-events:none;
   }
   .card:hover::before{opacity:1}
-  .card:hover{transform:translateY(-8px);border-color:rgba(95,184,232,.3)}
+  .card:hover{transform:translateY(-8px);border-color:rgba(255,77,94,.35)}
   .card:hover::after{transform:scaleX(1)}
   .card .ico{
     width:60px;height:60px;border-radius:16px;
-    background:rgba(95,184,232,.1);
+    background:rgba(255,77,94,.12);
     display:grid;place-items:center;font-size:1.7rem;margin-bottom:22px;
     transition:transform .4s cubic-bezier(.2,.8,.2,1);
   }
@@ -233,11 +245,11 @@
     transition:.4s cubic-bezier(.2,.8,.2,1);overflow:hidden;
     position:relative;
   }
-  .gal-item:hover{border-color:rgba(95,184,232,.4);transform:scale(1.03)}
+  .gal-item:hover{border-color:rgba(255,77,94,.5);transform:scale(1.03)}
   .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
   .gal-item:hover img{transform:scale(1.1)}
 
-  .contact{background:var(--bg2)}
+  .contact{background:rgba(20,25,34,.5);backdrop-filter:blur(10px)}
   .contact-grid{
     display:grid;grid-template-columns:1fr 1fr;gap:50px;
     max-width:1050px;margin:0 auto;align-items:start;
@@ -245,13 +257,14 @@
   .contact-info{display:flex;flex-direction:column;gap:16px}
   .ci{
     display:flex;gap:16px;align-items:center;
-    padding:16px 20px;background:var(--card);border-radius:14px;
+    padding:16px 20px;background:rgba(26,32,41,.75);backdrop-filter:blur(10px);
+    border-radius:14px;
     border:1px solid rgba(255,255,255,.06);transition:.3s;
   }
-  .ci:hover{border-color:rgba(95,184,232,.35);transform:translateX(6px)}
+  .ci:hover{border-color:rgba(255,77,94,.4);transform:translateX(6px)}
   .ci .ic{
     width:46px;height:46px;border-radius:12px;flex:0 0 46px;
-    background:rgba(95,184,232,.1);display:grid;place-items:center;font-size:1.2rem;
+    background:rgba(255,77,94,.12);display:grid;place-items:center;font-size:1.2rem;
     transition:transform .3s;
   }
   .ci:hover .ic{transform:scale(1.1) rotate(-5deg)}
@@ -272,6 +285,8 @@
     padding:50px 6vw 30px;
     border-top:1px solid rgba(255,255,255,.07);
     text-align:center;color:var(--muted);font-size:.9rem;
+    background:rgba(14,17,23,.6);
+    backdrop-filter:blur(10px);
   }
   footer .logo{justify-content:center;margin-bottom:14px}
   .socials{display:flex;gap:16px;justify-content:center;margin:22px 0}
@@ -282,18 +297,18 @@
     transition:.3s cubic-bezier(.2,.8,.2,1);
   }
   .socials a:hover{
-    background:linear-gradient(120deg,var(--accent),#3a9bd1);
-    color:#0b1017;transform:translateY(-6px) rotate(-6deg);
-    box-shadow:0 10px 25px -6px rgba(95,184,232,.7);
+    background:linear-gradient(120deg,var(--accent),#d63a4b);
+    color:#fff;transform:translateY(-6px) rotate(-6deg);
+    box-shadow:0 10px 25px -6px rgba(255,77,94,.75);
   }
 
   .to-top{
     position:fixed;right:24px;bottom:24px;z-index:99;
     width:48px;height:48px;border-radius:50%;
-    background:linear-gradient(120deg,var(--accent),#3a9bd1);
-    color:#0b1017;border:0;cursor:pointer;font-size:1.2rem;
+    background:linear-gradient(120deg,var(--accent),#d63a4b);
+    color:#fff;border:0;cursor:pointer;font-size:1.2rem;
     display:grid;place-items:center;
-    box-shadow:0 10px 30px -8px rgba(95,184,232,.7);
+    box-shadow:0 10px 30px -8px rgba(255,77,94,.75);
     opacity:0;pointer-events:none;
     transition:.4s cubic-bezier(.2,.8,.2,1);
   }
@@ -306,7 +321,7 @@
     .contact-grid{grid-template-columns:1fr}
     nav{
       display:none;position:absolute;top:100%;left:0;right:0;
-      flex-direction:column;background:var(--bg2);padding:24px 6vw;gap:18px;
+      flex-direction:column;background:rgba(20,25,34,.95);padding:24px 6vw;gap:18px;
       border-bottom:1px solid rgba(255,255,255,.08);
     }
     nav.open{display:flex}
@@ -328,7 +343,7 @@
     </div>
     <div class="logo-text">
       <b>Right Light</b>
-      <small>ремонт фар · автосвет</small>
+      <small>мастерская автосвета</small>
     </div>
   </a>
   <nav id="nav">
@@ -342,9 +357,9 @@
 <section class="hero">
   <div class="hero-grid">
     <div>
-      <span class="badge">РЕМОНТ ФАР · УЛУЧШЕНИЕ АВТОСВЕТА · УФА</span>
-      <h1>Ремонт фар.<br>Улучшение <span>автосвета</span></h1>
-      <p><b>Ремонт фар. Улучшение автосвета.</b><br>Работаем с ксеноном, LED, би-линзами и оригинальными компонентами. Делаем свет ярче, а путь — безопаснее.</p>
+      <span class="badge">МАСТЕРСКАЯ АВТОСВЕТА · УФА</span>
+      <h1>Свет, который<br>ведёт <span>за собой</span></h1>
+      <p>Мы занимаемся любимым делом — делаем ваш автосвет ярче и надёжнее. Ремонт фар, улучшение освещения, аккуратный подход к каждому автомобилю.</p>
       <div class="btns">
         <a href="#contacts" class="btn btn-primary">Оставить заявку →</a>
         <a href="#services" class="btn btn-ghost">Наши услуги</a>
@@ -357,7 +372,7 @@
       <img src="photo2.jpg" alt="Работа Right Light" class="hero-slide">
       <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(14,17,23,.95),transparent 55%);z-index:2"></div>
       <div class="inner">
-        <p>«Делаем Ваш путь ярче!»</p>
+        <p>«Ваш путь — наша забота»</p>
       </div>
     </div>
   </div>
@@ -366,20 +381,20 @@
 <section id="services">
   <div class="container">
     <div class="sec-head">
-      <div class="tag">Что мы делаем</div>
+      <div class="tag">Чем мы можем помочь</div>
       <h2>Наши услуги</h2>
-      <p>Два главных направления — ремонт фар и улучшение автосвета.</p>
+      <p>Каждую фару делаем с вниманием — как для себя. Вот что мы умеем лучше всего.</p>
     </div>
     <div class="cards">
       <div class="card">
         <div class="ico">🔧</div>
         <h3>Ремонт фар</h3>
-        <p>Устранение трещин, запотевания, замена стёкол и корпусов. Восстановление герметичности и полная диагностика.</p>
+        <p>Уберём трещины и запотевание, заменим стёкла и корпуса, вернём герметичность. Аккуратно и с гарантией — ваша фара снова как новая.</p>
       </div>
       <div class="card">
         <div class="ico">🔆</div>
         <h3>Улучшение автосвета</h3>
-        <p>Повышаем яркость и качество света: би-линзы, LED-модули, замена ламп. Настройка светового пучка под ваш автомобиль.</p>
+        <p>Сделаем свет ярче и комфортнее: би-линзы, LED-модули, замена ламп. Настроим пучок так, чтобы дорога была видна, а встречные не слепились.</p>
       </div>
     </div>
   </div>
@@ -388,9 +403,9 @@
 <section id="gallery">
   <div class="container">
     <div class="sec-head">
-      <div class="tag">Портфолио</div>
-      <h2>Наши работы</h2>
-      <p>Автомобили, которым мы сделали свет ярче.</p>
+      <div class="tag">Наши работы</div>
+      <h2>Машины, которым мы подарили свет</h2>
+      <p>Каждая из них уехала от нас с яркими фарами и довольным владельцем.</p>
     </div>
     <div class="gallery">
       <div class="gal-item"><img src="photo1.jpg" alt="Работа Right Light"></div>
@@ -406,9 +421,9 @@
 <section class="contact" id="contacts">
   <div class="container">
     <div class="sec-head">
-      <div class="tag">Связаться с нами</div>
+      <div class="tag">Мы всегда на связи</div>
       <h2>Контакты</h2>
-      <p>Запишитесь на консультацию или приезжайте в мастерскую.</p>
+      <p>Позвоните, напишите или просто приезжайте — расскажем, чем можем помочь.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info">
@@ -454,10 +469,10 @@
     </div>
     <div class="logo-text" style="text-align:left">
       <b>Right Light</b>
-      <small>ремонт фар · автосвет</small>
+      <small>мастерская автосвета</small>
     </div>
   </div>
-  <p>Делаем Ваш путь ярче!</p>
+  <p>Работаем с любовью к свету и к машинам</p>
   <div class="socials">
     <a href="https://instagram.com/rightlight.ru" target="_blank" title="Instagram">📷</a>
     <a href="https://wa.me/79272368806" target="_blank" title="WhatsApp">💬</a>
@@ -504,6 +519,7 @@
   document.querySelectorAll('.card').forEach(card=>{
     card.addEventListener('mousemove', e=>{
       const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
       card.style.setProperty('--my', (e.clientY - r.top) + 'px');
     });
   });
