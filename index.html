@@ -11,7 +11,7 @@
 <meta property="og:title" content="Right Light — ремонт фар и улучшение автосвета">
 <meta property="og:description" content="Мастерская автосвета в Уфе. Делаем Ваш путь ярче!">
 <meta property="og:image" content="photo1.jpg">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary_large_image"
 
 <style>
   :root{
@@ -504,7 +504,6 @@
   document.querySelectorAll('.card').forEach(card=>{
     card.addEventListener('mousemove', e=>{
       const r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
       card.style.setProperty('--my', (e.clientY - r.top) + 'px');
     });
   });
